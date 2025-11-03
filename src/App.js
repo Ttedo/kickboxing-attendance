@@ -3,8 +3,15 @@ import * as XLSX from "xlsx";
 import logo from "./logo192.png";
 
 function App() {
-  const [students, setStudents] = useState([]);
+  const [students, setStudents] = useState(() => {
+    const saved = localStorage.getItem("students");
+    return saved ? JSON.parse(saved) : [];
+  });
   const [inputNames, setInputNames] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("students", JSON.stringify(students));
+  }, [students]);
 
   const handleAddStudents = () => {
     const namesArray = inputNames
