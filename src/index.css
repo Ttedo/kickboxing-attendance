@@ -4,4 +4,18 @@
 
 body {
   @apply bg-[#0d3b24];
+}@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.motion-safe\:animate-float {
+  animation: float 4s ease-in-out infinite;
 }
